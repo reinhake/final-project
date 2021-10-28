@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <title>Fitness Planner</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/style.css" media="screen">
+
+    <script src="/index.js" charset="utf-8" defer></script>
+
+  </head>
+
+    <body>
+		<header>
+      <!-- The <i> tag below includes the lizard hand icon from Font Awesome.  Do not directly style this element. -->
+      <a href="#"><h1 class="site-title"><i class="far fa-hand-lizard"></i> Fitness Planner</h1></a>
+
+      <nav class="navbar">
+        <ul class="navlist">
+          <li class="navitem navlink active"><a href="#">Planner</a></li>
+          <li class="navitem navlink"><a href="#">Calender</a></li>
+          <li class="navitem navlink"><a href="#">Map</a></li>
+        </ul>
+      </nav>
+    </header>
+		<div class="heading">
+			<h2>
+				Planner
+			</h2>
+			<div class="info">
+				<h4 class="how-to">
+					How to Use:
+				</h4>
+				<p class="how-to">
+					<ol>
+						<li>Choose a day of the week.</li>
+						<li>Choose exercises from the lists below.</li>
+						<li>Click the 'Add' button at the bottom to add it to your calendar</li>
+					</ol>
+				</p>
+			</div>
+			<div id="dropdown">
+			<label class="dotw">
+				Day:
+			</label>
+			<select name="Day of the Week" id="day">
+				<option value="Monday">Monday</option>
+				<option value="Tuesday">Tuesday</option>
+				<option value="Wednesday">Wednesday</option>
+				<option value="Thursday">Thursday</option>
+				<option value="Friday">Friday</option>
+				<option value="Saturday">Saturday</option>
+				<option value="Sunday">Sunday</option>
+			</select>
+			</div>
+		</div>
+		
+		<div>
+			<article class="exercise-type">
+				<h4 class="exercise-title">
+					Biceps:
+				</h4>
+				<div class="exercises">
+					<ul class="list bicep">
+						<li class="exercise biceps">Bicep Curls</li>
+						<li class="exercise biceps">Preacher Curls</li>
+						<li class="exercise biceps">Concentration Curls</li>
+					</ul>
+				</div>
+			</article>
+		</div>
+		
+		<div>
+			<article class="exercise-type">
+				<h4 class="exercise-title">
+					Triceps:
+				</h4>
+				<div class="exercises">
+					<ul class="list tricep">
+						<li class="exercise triceps">Tricep Extensions</li>
+						<li class="exercise triceps">Dips</li>
+						<li class="exercise triceps">Tricep Kickbacks</li>
+					</ul>
+				</div>
+			</article>
+		</div>
+		
+		<div>
+			<article class="exercise-type">
+				<h4 class="exercise-title">
+					Legs:
+				</h4>
+				<div class="exercises">
+					<ul class="list leg">
+						<li class="exercise legs">Squats</li>
+						<li class="exercise legs">Deadlifts</li>
+						<li class="exercise legs">Lunges</li>
+					</ul>
+				</div>
+			</article>
+		</div>
+		
+		<div>
+			<div class="image">
+				<img src="https://www.adobe.com/express/learn/blog/media_1757567cc431a16b46bdb33344d486d4516da0081.png" alt="Placeholder">
+				<h4 class="weekday">
+					Day:
+				</h4>
+				<div class="current-exercises">
+					
+				</div>
+			</div>
+		</div>
+		
+		<div>
+			<button type="button" class="add-workout">
+				<i class="fas fa-dumbbell fa-4x"></i>
+				<p class="submit">
+					Submit Workouts!
+				</p>
+			</button>
+		</div>
+	</body>
+	
+</html>
