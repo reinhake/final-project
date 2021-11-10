@@ -7,11 +7,12 @@ var app = express()
 
 app.set('view engine', 'html');
 app.use(express.static('public'));
+app.use(express.json())
 
 
 app.set('view engine', 'handlebars');
 
-var port = 3000
+var port = 8080
 
 app.get('/', function (req, res) {
 	res.sendfile('index.html')
