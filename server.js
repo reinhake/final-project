@@ -18,6 +18,18 @@ app.get('/', function (req, res) {
 	res.sendfile('index.html')
 })
 
+app.get('/planner', function (req, res) {
+	res.sendfile('index.html')
+})
+
+app.get('/Calendar', function (req, res) {
+	res.sendfile('public/Calendar.html')
+})
+
+app.get('/Map', function (req, res) {
+	res.sendfile('index.html')
+})
+
 app.get('*', function (req, res, next) {
     res.status(404).render('404');
 });
