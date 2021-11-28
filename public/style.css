@@ -75,18 +75,22 @@ h2 {
 }
 
 .exercise-type {
+	display: flex;
 	background-color: white;
 	outline: 2px solid black;
 	margin-left: 5%;
 	margin-right: 5%;
 	border-radius: 10px;
 	margin-top: 4%;
+
 }
 
 .exercise-title {
 	padding: 20px;
-	font-size: 25px;
+	font-size: 35px;
 	margin: 0;
+/*	position: absolute;
+	left: 45%;*/
 }
 
 .list {
@@ -102,6 +106,7 @@ h2 {
 	padding: 10px;
 	border-radius: 5px;
 	min-width: 20%;
+	font-size: 25px;
 }
 
 .exercise:hover {
@@ -131,9 +136,7 @@ img {
 	padding-left: 5%;
 }
 
-.change {
-	
-}
+
 
 .triceps {
 	background-color: khaki;
@@ -209,7 +212,41 @@ img {
 	width: 100%;
 }
 
-.exercise-src {
+h3 {
+	font-size: 30px;	
+}
+
+#locations {
+	display: flex;
+	flex-wrap: wrap;
+	
+	justify-content: center;
+	align-items: stretch;
+}
+
+.location {
+	background-color: white;
+	outline: 2px solid black;
+	margin: 2%;
+	border-radius: 10px;
+	padding: 20px;
+	padding-bottom: 0;
+	flex-basis: 100%;
+	font-size: 25px;
+}
+
+.location:hover {
+	box-shadow: 5px 5px;
+	color: black;
+	cursor: pointer;
+}
+
+a {
+	color: black;
+}
+
+.distance {
 	position: relative;
-	right: 5%;
+	left: 90%;
+	bottom: 55%;
 }

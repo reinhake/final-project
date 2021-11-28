@@ -1,0 +1,92 @@
+{
+    "G3 Sports & Fitness": {
+        "address": "5520 NW Highway 99 W, Corvallis, OR 97330",
+        "longitude": [-123.24254719380454],
+        "latitude": [44.628506107340534],
+        "website": "http://gthreesports.com/"
+    },
+    "Timberhill Athletic Club": {
+        "address": "2855 NW 29th St, Corvallis, OR 97330",
+        "longitude": [-123.28740837629432],
+        "latitude": [44.59672692136467],
+        "website": "http://timberhillac.com/"
+    },
+    "Burn Boot Camp": {
+        "address": "2479 NW Kings Blvd, Corvallis, OR 97330",
+        "longitude": [-123.27068839428857],
+        "latitude": [44.59491842740872],
+        "website": "https://burnbootcamp.com/locations/corvallis-or/?utm_campaign=reputationdotcom&utm_source=google&utm_medium=seo"
+    },
+    "Planet Fitness": {
+        "address": "1900 NW 9th St, Corvallis, OR 97330",
+        "longitude": [-123.25650815638495],
+        "latitude": [44.58964333188832],
+        "website": "https://www.planetfitness.com/gyms/corvallis-or"
+    },
+    "Orangetheory Fitness": {
+        "address": "1838 NW 9th St Suite 112, Corvallis, OR 97330",
+        "longitude": [-123.26074106322187],
+        "latitude": [44.58708096987576],
+        "website": "https://www.orangetheory.com/en-us/locations/oregon/corvallis/1838-nw-9th-st-suite-112/?utm_medium=seo&utm_source=gg&utm_term=tombras&utm_campaign=reputationdotcom--National"
+    },
+    "Curves": {
+        "address": "1333 NW 9th St Ste 155, Corvallis, OR 97330",
+        "longitude": [-123.25841296446156],
+        "latitude": [44.58286036267302],
+        "website": "http://curves.com/?utm_source=google&utm_medium=organic&utm_campaign=gmb-corvallis-or"
+    },
+    "Anytime Fitness Corvallis": {
+        "address": "955 NW Kings Blvd, Corvallis, OR 97330",
+        "longitude": [-123.27484742630494],
+        "latitude": [44.57792758622368],
+        "website": "https://www.anytimefitness.com/gyms/638/Corvallis-OR-97330/?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=638"
+    },
+    "SamFit - Corvallis": {
+        "address": "777 NW 9th St #310, Corvallis, OR 97330",
+        "longitude": [-123.26445335250229],
+        "latitude": [44.573232391351866],
+        "website": "https://www.samhealth.org/find-a-location/s/samfit-corvallis?utm_source=BrightLocal&utm_medium=LN&utm_campaign=001"
+    },
+    "The SHOP": {
+        "address": "244 NW 2nd St Suite 101, Corvallis, OR 97330",
+        "longitude": [-123.25989029778792],
+        "latitude": [44.5670022099747],
+        "website": "http://shop-training.com/"
+    },
+    "barre3": {
+        "address": "118 NW Jackson Ave, Corvallis, OR 97330",
+        "longitude": [-123.25875369232249],
+        "latitude": [44.56534006332461],
+        "website": "http://barre3.com/studio-locations/corvallis"
+    },
+    "CrossFit Train 97333": {
+        "address": "1780 SW 3rd St #110, Corvallis, OR 97333",
+        "longitude": [-123.26757111946273],
+        "latitude": [44.54952882245561],
+        "website": "http://www.crossfittrain97333.com/"
+    },
+    "Iron Beaver Weightlifting & Athletic Performance": {
+        "address": "33821 SE Eastgate Cir, Corvallis, OR 97333",
+        "longitude": [-123.2236934554528],
+        "latitude": [44.565504619814824],
+        "website": "http://www.ironbeaverweightlifting.com/"
+    },
+    "Downing's Gym": {
+        "address": "1820 SW 3rd St, Corvallis, OR 97333",
+        "longitude": [-123.26629080804389],
+        "latitude": [44.54741900977512],
+        "website": "http://www.downingsgym.net/"
+    },
+    "Snap Fitness Corvallis Sunset": {
+        "address": "5246 Philomath Blvd, Corvallis, OR 97333",
+        "longitude": [-123.30732004546303],
+        "latitude": [44.55283102098494],
+        "website": "https://www.snapfitness.com/us/gyms/corvallis-sunset-or/?utm_source=google&utm_medium=organic&utm_campaign=business-listing"
+    },
+    "Anytime Fitness Philomath": {
+        "address": "1313 Main St, Philomath, OR 97370",
+        "longitude": [-123.3655562126366],
+        "latitude": [44.542212040312414],
+        "website": "https://www.anytimefitness.com/gyms/70/Philomath-OR-97370/?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=70"
+    }
+}

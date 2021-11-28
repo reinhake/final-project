@@ -3,25 +3,21 @@ var triceps = document.querySelector('.tricep')
 var biceps = document.querySelector('.bicep')
 var legs = document.querySelector('.leg')
 
-/*
-function userAction(destination) {
-    var xhttp = new XMLHttpRequest();
-	var url = "https://limitless-woodland-36659.herokuapp.com/https://wikipedia-image-scraper.azurewebsites.net/getFirstImage?WikiUrl=https://en.wikipedia.org/wiki/"
-	url += destination
-	xhttp.open("GET", url, true);
-    xhttp.onload = function() {
-         if (xhttp.readyState == 4 && xhttp.status == 200) {
-			console.log('Image Loaded')
-            var img = document.createElement('img')
-			img.src = xhttp.firstImage.src
-			add = document.getElementsByClassName(destination)
-			add[0].appendChild(img)
-			xhttp.send(null);
-         }
-    }; 
+
+
+function getGyms () {
+	var req = new XMLHttpRequest();
+	var reqURL = "/gyms";
+	req.open('GET', reqURL);
+	req.addEventListener('load', function (eventt) {
+		if (eventt.target.status == 200){
+			res = req.responseText
+			console.log(req.response)
+			return JSON.parse(res)
+		}
+	})
 }
-*/
-//https://limitless-woodland-36659.herokuapp.com/https://wikipedia-image-scraper.azurewebsites.net/getFirstImage
+
 function userAction() {
 	url = "https://limitless-woodland-36659.herokuapp.com/https://wiki-image.herokuapp.com/getFirstImage?WikiUrl=https://en.wikipedia.org/wiki/"
 	bicep = url + "Biceps_curl"
@@ -34,28 +30,28 @@ function userAction() {
 	fetch(bicep)
 		.then(res => res.json())
 		.then(result => {
-			console.log(result)
+//			console.log(result)
 			add[0].src = result.firstImage.src
 		})
 		.catch(err=>console.log(err))
 	fetch(tricep)
 		.then(res => res.json())
 		.then(result => {
-			console.log(result)
+//			console.log(result)
 			add[1].src = result.firstImage.src
 		})
 		.catch(err=>console.log(err))
 	fetch(leg)
 		.then(res => res.json())
 		.then(result => {
-			console.log(result)
+//			console.log(result)
 			add[2].src = result.firstImage.src
 		})
 		.catch(err=>console.log(err))
 	fetch(exercise)
 		.then(res => res.json())
 		.then(result => {
-			console.log(result)
+//			console.log(result)
 			gen[0].src = result.firstImage.src
 		})
 		.catch(err=>console.log(err))
@@ -137,3 +133,78 @@ var dotw = document.querySelector('.day-exercise')
 window.addEventListener("load", function(){
 	userAction()
 })
+
+var locContainer = document.getElementById("locations")
+var places = {}
+
+function getLocations(lat, lon){
+	var gyms = 
+	fetch("/gyms")
+		.then(res => res.json())
+		.then(result => {
+			
+			gyms = result
+			var len = Object.keys(gyms).length
+			var loc = Object.keys(gyms)
+			var finals = ""
+
+			for(var i=0; i<len; i++){
+				if(i == 0){
+					finals += '{"user": [' + lat + ', ' + lon + '],'
+					finals += '"locations": {"' + loc[i] +'": [' + gyms[loc[i]].latitude + ', ' + gyms[loc[i]].longitude + '],'
+				}
+				else if(i == len-1){
+					finals += '"' + loc[i] +'": [' + gyms[loc[i]].latitude + ', ' + gyms[loc[i]].longitude + ']}}'
+				}
+				else{
+					finals += '"' + loc[i] +'": [' + gyms[loc[i]].latitude + ', ' + gyms[loc[i]].longitude + '],'
+				}
+			}
+			
+			
+			fetch("/findNUsers",
+			{
+				headers: {
+					'Accept': "application/json",
+					'Content-Type': 'application/json'
+				},
+				method: "POST",
+				body: finals
+			})
+			.then(res => res.json())
+			.then(result => {
+					console.log(result)
+					names = Object.keys(result)
+					for(var i=0; i < len; i++){
+						var link = document.createElement("a")
+						var newest = document.createElement("div")
+						newest.classList.add("location")
+						var name = document.createElement("h4")
+						name.innerText = names[i]
+						link.appendChild(name)
+						var addr = document.createElement("p")
+						addr.innerText = "Address: " + gyms[names[i]].address
+						link.appendChild(addr)
+						var dist = document.createElement("p")
+						var calculated = result[names[i]] * 10
+						dist.innerText = calculated.toFixed(2) + " Miles"
+						dist.classList.add("distance")
+						link.appendChild(dist)
+						
+						link.setAttribute('href',gyms[names[i]].website)
+						link.setAttribute('target',"_blank")
+						newest.appendChild(link)
+						locContainer.appendChild(newest)
+					}
+				})
+	})
+	
+	
+
+}
+
+if('geolocation' in navigator){
+	navigator.geolocation.getCurrentPosition((position) => {
+		getLocations(position.coords.latitude, position.coords.longitude)
+	})
+}
