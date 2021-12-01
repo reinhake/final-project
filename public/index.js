@@ -203,7 +203,7 @@ function getLocations(lat, lon){
 			}
 			
 			
-			fetch("/findNUsers",
+			fetch("https://findnclosestusers.azurewebsites.net/findNUsers",
 			{
 				headers: {
 					'Accept': "application/json",
