@@ -133,7 +133,7 @@ function getLocationOrder(locationBody, gymLocations, length){
 		})
 }
 
-//locations are formated put into html
+//locations are formated and put into html
 function inputLocation(gymLocations, gymNames, result, i){
 	var link = document.createElement("a")
 	var newest = document.createElement("div")
@@ -160,3 +160,21 @@ if('geolocation' in navigator){
 		getLocations(position.coords.latitude, position.coords.longitude)
 	})
 }
+
+exitButton = document.getElementById("modal-exit")
+modal = document.getElementById("info-box")
+backdrop = document.getElementById("backdrop")
+infoButton = document.querySelector(".fa-hand-lizard")
+
+exitButton.addEventListener("click", function (){
+	modal.classList.toggle("hidden")
+	backdrop.classList.toggle("hidden")
+})
+
+infoButton.addEventListener("click", function(){
+	modal.classList.toggle("hidden")
+	backdrop.classList.toggle("hidden")
+})
+
+
+
