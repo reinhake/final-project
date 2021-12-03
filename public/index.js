@@ -100,13 +100,19 @@ function getLocations(lat, lon){
 			for(var i=0; i<length; i++){
 				if(i == 0){
 					locationBody += '{"user": [' + lat + ', ' + lon + '],'
-					locationBody += '"locations": {"' + locationID[i] +'": [' + gymLocations[locationID[i]].latitude + ', ' + gymLocations[locationID[i]].longitude + '],'
+					locationBody += ('"locations": {"' + locationID[i] 
+					+'": [' + gymLocations[locationID[i]].latitude + ', ' 
+					+ gymLocations[locationID[i]].longitude + '],');
 				}
 				else if(i == length-1){
-					locationBody += '"' + locationID[i] +'": [' + gymLocations[locationID[i]].latitude + ', ' + gymLocations[locationID[i]].longitude + ']}}'
+					locationBody += ('"' + locationID[i] +'": [' 
+					+ gymLocations[locationID[i]].latitude + ', ' 
+					+ gymLocations[locationID[i]].longitude + ']}}');
 				}
 				else{
-					locationBody += '"' + locationID[i] +'": [' + gymLocations[locationID[i]].latitude + ', ' + gymLocations[locationID[i]].longitude + '],'
+					locationBody += ('"' + locationID[i] +'": [' 
+					+ gymLocations[locationID[i]].latitude + ', ' 
+					+ gymLocations[locationID[i]].longitude + '],')
 				}
 			}
 			getLocationOrder(locationBody, gymLocations, length)
@@ -142,6 +148,7 @@ function inputLocation(gymLocations, gymNames, result, i){
 	name.innerText = gymNames[i]
 	link.appendChild(name)
 	var addr = document.createElement("p")
+	addr.classList.add("address")
 	addr.innerText = "Address: " + gymLocations[gymNames[i]].address
 	link.appendChild(addr)
 	var dist = document.createElement("p")

@@ -317,6 +317,11 @@ a {
 	left: 90%;
 	bottom: 55%;
 	z-index: 0;
+	margin: 0;
+}
+
+.address {
+	margin: 0;
 }
 
 .change {
