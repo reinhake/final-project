@@ -1,6 +1,4 @@
-
-
-var current = document.querySelector('.mon')
+var current = document.querySelector('#Monday')
 var curb = document.querySelector('.dropbtn')
 var triceps = document.querySelector('.tricep')
 var biceps = document.querySelector('.bicep')
@@ -10,132 +8,46 @@ var chests = document.querySelector('.chest')
 var backs = document.querySelector('.back')
 var ab = document.querySelector('.ab')
 var card = document.querySelector('.card')
+add = document.getElementsByClassName('exercise-src')
+gen = document.getElementsByClassName('generic')
 
-
-
-
-function userAction() {
-	url = "https://limitless-woodland-36659.herokuapp.com/https://wiki-image.herokuapp.com/getFirstImage?WikiUrl=https://en.wikipedia.org/wiki/"
-	bicep = url + "Biceps_curl"
-	tricep = url + "Triceps"
-	leg = url + "List_of_weight_training_exercises"
-	shoulder = url + "Pull-down_(exercise)"
-	chest = url + "Dumbbell"
-	back = url + "Hyperextension_(exercise)"
-	abs = url + "Crunch_(exercise)"
-	cardio = url + "Aerobic_exercise"
-	add = document.getElementsByClassName('exercise-src')
-	gen = document.getElementsByClassName('generic')
-	
-	fetch(bicep)
+function getImage(URLink, position){
+	fetch(URLink)
 		.then(res => res.json())
 		.then(result => {
-			add[0].src = result.firstImage.src
+			add[position].src = result.firstImage.src
 		})
-		.catch(err=>console.log(err))
-	fetch(tricep)
-		.then(res => res.json())
-		.then(result => {
-			add[1].src = result.firstImage.src
-		})
-		.catch(err=>console.log(err))
-	fetch(leg)
-		.then(res => res.json())
-		.then(result => {
-			add[2].src = result.firstImage.src
-		})
-		.catch(err=>console.log(err))
-	fetch(shoulder)
-		.then(res => res.json())
-		.then(result => {
-			add[3].src = result.firstImage.src
-		})
-		.catch(err=>console.log(err))
-	fetch(chest)
-		.then(res => res.json())
-		.then(result => {
-			add[4].src = result.firstImage.src
-		})
-		.catch(err=>console.log(err))
-	fetch(back)
-		.then(res => res.json())
-		.then(result => {
-			add[5].src = result.firstImage.src
-		})
-		.catch(err=>console.log(err))
-	fetch(abs)
-		.then(res => res.json())
-		.then(result => {
-			add[6].src = result.firstImage.src
-		})
-		.catch(err=>console.log(err))
-	fetch(cardio)
-		.then(res => res.json())
-		.then(result => {
-			add[7].src = result.firstImage.src
-		})
-		.catch(err=>console.log(err))
+		.catch(err=> console.log(err))
 }
 
-
-var mon = document.querySelector('.Monday')
-mon.addEventListener("click", function () {
-	curb.innerText = "Monday"
-	current.classList.remove("focus")
-	current = document.querySelector(".mon")
-	current.classList.add("focus")
+window.addEventListener("load", function(){
+	userAction()
 })
 
-var tue = document.querySelector('.Tuesday')
-tue.addEventListener("click", function () {
-	curb.innerText = "Tuesday"
-	current.classList.remove("focus")
-	current = document.querySelector(".tue")
-	current.classList.add("focus")
+//Calls getImage for each of the different exercise focuses
+function userAction() {
+	url = "https://limitless-woodland-36659.herokuapp.com/https://wiki-image.herokuapp.com/getFirstImage?WikiUrl=https://en.wikipedia.org/wiki/"
+	getImage(url + "Biceps_curl", 0)
+	getImage(url + "Triceps", 1)
+	getImage(url + "List_of_weight_training_exercises", 2)
+	getImage(url + "Pull-down_(exercise)", 3)
+	getImage(url + "Dumbbell", 4)
+	getImage(url + "Hyperextension_(exercise)", 5)
+	getImage(url + "Crunch_(exercise)", 6)
+	getImage(url + "Aerobic_exercise", 7)
+}
+
+//Changes the Weekday focus
+document.querySelectorAll('.focusDay').forEach(item => {
+	item.addEventListener('click', function(){
+		curb.innerText = item.innerText
+		current.classList.remove("focus")
+		current = document.getElementById(item.innerText)
+		current.classList.add("focus")
+	})
 })
 
-var wed = document.querySelector('.Wednesday')
-wed.addEventListener("click", function () {
-	curb.innerText = "Wednesday"
-	current.classList.remove("focus")
-	current = document.querySelector(".wed")
-	current.classList.add("focus")
-})
-
-var thu = document.querySelector('.Thursday')
-thu.addEventListener("click", function () {
-	curb.innerText = "Thursday"
-	current.classList.remove("focus")
-	current = document.querySelector(".thu")
-	current.classList.add("focus")
-})
-
-var fri = document.querySelector('.Friday')
-fri.addEventListener("click", function () {
-	curb.innerText = "Friday"
-	current.classList.remove("focus")
-	current = document.querySelector(".fri")
-	current.classList.add("focus")
-})
-
-var sat = document.querySelector('.Saturday')
-sat.addEventListener("click", function () {
-	curb.innerText = "Saturday"
-	current.classList.remove("focus")
-	current = document.querySelector(".sat")
-	current.classList.add("focus")
-})
-
-var sun = document.querySelector('.Sunday')
-sun.addEventListener("click", function () {
-	curb.innerText = "Sunday"
-	current.classList.remove("focus")
-	current = document.querySelector(".sun")
-	current.classList.add("focus")
-})
-
-
-
+//handles the selecting and deselecting of exercises
 document.querySelectorAll(".exercise").forEach(item => {
 	item.addEventListener('click', function (){
 		if (item.classList.contains('change')){
@@ -171,77 +83,76 @@ document.querySelectorAll(".exercise").forEach(item => {
 	})
 })
 
-window.addEventListener("load", function(){
-	userAction()
-})
-
 var locContainer = document.getElementById("locations")
 var places = {}
 
+//gets the gym location json and prepares it to send
 function getLocations(lat, lon){
-	var gyms = 
 	fetch("/gyms")
 		.then(res => res.json())
 		.then(result => {
 			
-			gyms = result
-			var len = Object.keys(gyms).length
-			var loc = Object.keys(gyms)
-			var finals = ""
+			gymLocations = result
+			var length = Object.keys(gymLocations).length
+			var locationID = Object.keys(gymLocations)
+			var locationBody = ""
 
-			for(var i=0; i<len; i++){
+			for(var i=0; i<length; i++){
 				if(i == 0){
-					finals += '{"user": [' + lat + ', ' + lon + '],'
-					finals += '"locations": {"' + loc[i] +'": [' + gyms[loc[i]].latitude + ', ' + gyms[loc[i]].longitude + '],'
+					locationBody += '{"user": [' + lat + ', ' + lon + '],'
+					locationBody += '"locations": {"' + locationID[i] +'": [' + gymLocations[locationID[i]].latitude + ', ' + gymLocations[locationID[i]].longitude + '],'
 				}
-				else if(i == len-1){
-					finals += '"' + loc[i] +'": [' + gyms[loc[i]].latitude + ', ' + gyms[loc[i]].longitude + ']}}'
+				else if(i == length-1){
+					locationBody += '"' + locationID[i] +'": [' + gymLocations[locationID[i]].latitude + ', ' + gymLocations[locationID[i]].longitude + ']}}'
 				}
 				else{
-					finals += '"' + loc[i] +'": [' + gyms[loc[i]].latitude + ', ' + gyms[loc[i]].longitude + '],'
+					locationBody += '"' + locationID[i] +'": [' + gymLocations[locationID[i]].latitude + ', ' + gymLocations[locationID[i]].longitude + '],'
 				}
 			}
-			
-			
-			fetch("https://findnclosestusers.azurewebsites.net/findNUsers",
-			{
-				headers: {
-					'Accept': "application/json",
-					'Content-Type': 'application/json'
-				},
-				method: "POST",
-				body: finals
-			})
-			.then(res => res.json())
-			.then(result => {
-					console.log(result)
-					names = Object.keys(result)
-					for(var i=0; i < len; i++){
-						var link = document.createElement("a")
-						var newest = document.createElement("div")
-						newest.classList.add("location")
-						var name = document.createElement("h4")
-						name.innerText = names[i]
-						link.appendChild(name)
-						var addr = document.createElement("p")
-						addr.innerText = "Address: " + gyms[names[i]].address
-						link.appendChild(addr)
-						var dist = document.createElement("p")
-						var calculated = result[names[i]] * 10
-						dist.innerText = calculated.toFixed(2) + " Miles"
-						dist.classList.add("distance")
-						link.appendChild(dist)
-						
-						link.setAttribute('href',gyms[names[i]].website)
-						link.setAttribute('target',"_blank")
-						newest.appendChild(link)
-						locContainer.appendChild(newest)
-					}
-				})
-	})
-	
-	
+			getLocationOrder(locationBody, gymLocations, length)
+		})
+}
 
+//sends prepared json to api
+function getLocationOrder(locationBody, gymLocations, length){
+	fetch("https://findnclosestusers.azurewebsites.net/findNUsers",
+		{
+			headers: {
+				'Accept': "application/json",
+				'Content-Type': 'application/json'
+			},
+			method: "POST",
+			body: locationBody
+		})
+		.then(res => res.json())
+		.then(result => {
+			gymNames = Object.keys(result)
+			for(var i=0; i < length; i++){
+				inputLocation(gymLocations, gymNames, result, i)
+			}
+		})
+}
+
+//locations are formated put into html
+function inputLocation(gymLocations, gymNames, result, i){
+	var link = document.createElement("a")
+	var newest = document.createElement("div")
+	newest.classList.add("location")
+	var name = document.createElement("h4")
+	name.innerText = gymNames[i]
+	link.appendChild(name)
+	var addr = document.createElement("p")
+	addr.innerText = "Address: " + gymLocations[gymNames[i]].address
+	link.appendChild(addr)
+	var dist = document.createElement("p")
+	var calculated = result[gymNames[i]] * 10
+	dist.innerText = calculated.toFixed(2) + " Miles"
+	dist.classList.add("distance")
+	link.appendChild(dist)
+	link.setAttribute('href', gymLocations[gymNames[i]].website)
+	link.setAttribute('target',"_blank")
+	newest.appendChild(link)
+	locContainer.appendChild(newest)
 }
 
 if('geolocation' in navigator){
